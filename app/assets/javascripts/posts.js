@@ -27,25 +27,25 @@
 
 $(document).on('turbolinks:load', function(){
 	function buildHTML(message) {
-	  var html = `<li id="list_item" class="list-group-item list-group-item-light">
-	  <div class="row">
-		<div class="col-md-10">
-		  ${message.text}
+		var html = `<li id="list_item" class="list-group-item list-group-item-light">
+		<div class="row">
+			<div class="col-md-10">
+			${message.text}
+			</div>
+			<div class="col-md-2">
+			投稿者：${message.user_name}
+			</div>
 		</div>
-		<div class="col-md-2">
-		  投稿者：${message.user_name}
+		<div class="row">
+			<div class="col2">
+			投稿時間：
+			</div>
+			<div class="col">
+			${message.date}
+			</div>
 		</div>
-	  </div>
-	  <div class="row">
-		<div class="col2">
-		  投稿時間：
-		</div>
-		<div class="col">
-		  ${message.date}
-		</div>
-	  </div>
-	</li>`
-	return html;
+		</li>`
+		return html;
 	}
 	$('#new_comment').on('submit', function(e){
 		e.preventDefault(); 
