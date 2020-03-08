@@ -1,0 +1,18 @@
+<li id="list_item" class="list-group-item list-group-item-light">
+  <div class="row">
+    <div class="col-md-10">
+      <%= comment.text %>
+    </div>
+    <div class="col-md-2">
+      投稿者：<%=current_user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col2">
+      投稿時間：
+    </div>
+    <div class="col">
+      <%=comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+    </div>
+  </div>
+</li>

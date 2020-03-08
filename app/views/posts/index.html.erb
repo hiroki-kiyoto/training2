@@ -1,0 +1,21 @@
+<ul class="list-unstyled">
+  <li class="media">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="card">
+          <%= link_to post_path(post) , {class: "card-img-top"} do %>
+            <%= video_tag post.video.to_s, :size => "360x200" %>
+          <% end %>
+          <div class="card-body">
+            <h5>【タイトル】</h5>
+            　<%= link_to post_path(post) do %>
+                <h5 class="card-title"><%= post.title.truncate(13, omission: '...') %></p>
+              <% end %>
+          </div>
+          <div class="card-footer">投稿者：<%= post.user.name %></div>
+        </div>
+      <% end %>
+    </div>
+  </li>
+</ul>
+

@@ -1,0 +1,17 @@
+.navbar-brand{
+	margin-left: 270px;
+	font-size: 30px;
+}
+
+.new-post{
+	margin-right: 300px;
+}
+
+.navbar-header{
+	display: table; 
+}
+
+.nav-item{
+	display: table-cell; /* 子要素はテーブルセル要素にする */
+    vertical-align: middle; /* 上下中央に寄せる */ 
+}

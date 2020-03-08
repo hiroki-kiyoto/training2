@@ -1,0 +1,41 @@
+<div class="past_header">
+  <h1><%= @post.title %></h1>
+</div>
+<div id="nicoscreen">
+  <iframe width="1024" height="576" src="<%= @post.video.to_s %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="show_btns row">
+  <div class="btn">いいね件数: <%= @post.likes.count %></div>
+  <% if current_user.already_liked?(@post) %>
+    <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete, class: 'btn btn-danger btn-block' %>
+  <% else %>
+    <%= button_to 'いいね', post_likes_path(@post), class: 'btn btn-primary btn-block' %>
+<% end %>
+  <div class="btn">友達登録: <%= @post.user.followers.count %></div>
+  <%= render "relationships/follow_button", user: @post.user , post: @post%>
+</div>
+
+<button class="btn btn-primary body_btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  概要欄
+</button>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <p><%= @post.body %></p>
+  </div>
+</div>
+
+<%= form_with(model: [@post, @comment], class: "comment row", id: "new_comment") do |form| %>
+  <%= form.text_field :text, placeholder: "タイトル", class: "form-control col-md-10", id: "comment_text"  %>
+  <%= form.submit "コメント", class: "btn btn-secondary col-md-1", id: "comment_button"%>
+  <%= form.hidden_field :post_id, value: @post.id %>
+<% end %>
+
+<div id="comment_list">
+  <ul id="list" class="list-group">
+    <% @comments.each do |comment| %>
+      <%= render partial: "comment", locals: {comment: comment} %>
+    <% end %>
+  </ul>
+</div>

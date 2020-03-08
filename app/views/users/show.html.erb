@@ -1,0 +1,26 @@
+<ul class="list-unstyled">
+    <li class="media">
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="card">
+            <%= video_tag post.video.to_s, :size => "360x200" %>
+            <div class="card-body row">
+              <h5 class="mt-0 mb-1 col-12"><%= post.title.truncate(10, omission: '...') %></h5>
+              <div class="btn">いいね件数: <%= post.likes.count %></div>
+              <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <div class="dropdown-menu_text">
+                  <%= link_to '削除', post, method: :delete, data: { confirm: '削除しますか?' } %>
+                </div>
+                <div class="dropdown-menu_text">
+                  <%= link_to '編集', edit_post_path(post) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </li>
+  </ul>
