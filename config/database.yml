@@ -54,3 +54,5 @@ production:
   database: training2_production
   username: training2
   password: <%= ENV['TRAINING2_DATABASE_PASSWORD'] %>
+
+  
